@@ -2,6 +2,7 @@ package main;
 
 import java.util.Scanner;
 import java.io.File;
+import java.io.FileNotFoundException;
 
 public class Lab01 {
 	private static Scanner kb = new Scanner(System.in);
@@ -22,10 +23,12 @@ public class Lab01 {
 		System.out.println("Input file name:");
 		String fileName = kb.nextLine();
 		File file = new File(fileName);
-		if(file.exists()) {
-			
-		}else {
-			
+		try(Scanner fileScanner = new Scanner(file)){
+			while (fileScanner.hasNextLine()) {
+				fileContent += fileScanner.nextLine();
+			}
+		} catch (FileNotFoundException fnfe) {
+			System.err.println("File not found");
 		}
 		return fileContent;
 	}
