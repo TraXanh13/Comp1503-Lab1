@@ -1,37 +1,61 @@
 package main;
 
 import java.util.Scanner;
+/*
 import java.io.File;
 import java.io.FileNotFoundException;
+*/
 
 public class Lab01 {
-	private static Scanner kb = new Scanner(System.in);
+	Scanner kb = new Scanner(System.in);
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		run();
+		Lab01 lab01 = new Lab01();
+		lab01.run();
 	}
 
-	private static void run() {
-		// TODO Auto-generated method stub
-		readIn();
-	}
-
-	private static String readIn() {
-		// TODO Auto-generated method stub
-		String fileContent = "";
-		System.out.println("Input file name:");
-		String fileName = kb.nextLine();
-		File file = new File(fileName);
-		try(Scanner fileScanner = new Scanner(file)){
-			while (fileScanner.hasNextLine()) {
-				fileContent += fileScanner.nextLine();
+	public void run() {
+		while(kb.hasNext()) {
+			String word = kb.next().trim().replaceAll("[^a-zA-Z]", "");
+			if(word.length() > 0) {
+				System.out.println(word);				
 			}
+		}
+	}
+	
+	/*
+	Scanner kb = new Scanner(System.in);
+
+	public static void main(String[] args) {
+		Lab01 lab01 = new Lab01();
+		lab01.run();
+	}
+
+	public void run() {
+		String fileName = "";
+		System.out.println("Input file name:");
+		fileName = kb.nextLine();
+		readIn(new File(fileName));
+		//writeOut(fileContent);
+	}
+
+
+	private static String readIn(File file) {
+		String fileContent = "";
+		try(Scanner fileScanner = new Scanner(file)){
+			while (fileScanner.hasNext()) {
+				System.out.println(fileScanner);
+			}
+			System.out.println(fileContent);
+			return fileContent;
 		} catch (FileNotFoundException fnfe) {
 			System.err.println("File not found");
 		}
 		return fileContent;
 	}
-	
 
+	private static void writeOut() {
+		
+	}
+	 */
 }
